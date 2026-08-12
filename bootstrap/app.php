@@ -15,6 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->statefulApi();
 
+        $middleware->trustProxies(at: '*');
+
         $middleware->append(
             \Illuminate\Http\Middleware\HandleCors::class
         );
