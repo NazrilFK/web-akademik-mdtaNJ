@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Auth\Events\Login;
 use Carbon\Carbon;
 
@@ -17,9 +16,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        Carbon::setLocale('id');
-
-        URL::forceScheme('https');
+        Carbon::setLocale('id');    
 
         Event::listen(Login::class, function (Login $event) {
             $event->user->update([
